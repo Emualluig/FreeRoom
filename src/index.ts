@@ -123,12 +123,11 @@ const CONSTANTS: Constants = {
     SELECT_WEEKDAY: null,
 };
 
-const url = String.raw`https://portalapi2.uwaterloo.ca/v2/map/OpenClassrooms`;
+const url = String.raw`https://corsproxy.io/?https://portalapi2.uwaterloo.ca/v2/map/OpenClassrooms`;
 const getResponse = async (): Promise<ApiResponse> => {
     try {
         const res = await fetch(url, {
-            credentials: "include",
-            method: "GET"
+            method: "GET",
         });
         return await res.json();
     } catch (e) {
@@ -276,14 +275,17 @@ const startupRender = (): void => {
     if (CONSTANTS.SELECT_WEEKDAY === null) {
         throw new Error("Could not find weekday selector.");
     }
-    CONSTANTS.SELECT_BUILDING.insertAdjacentHTML("afterbegin", `<option value="---">--- any ---</option>`)
+    CONSTANTS.SELECT_BUILDING.insertAdjacentHTML("afterbegin", `<option value="---" selected="selected">--- any ---</option>`)
     for (const building of AVAILABLE_BUILDINGS) {
         const html = `<option value="${building}">${building}</option>`;
-        CONSTANTS.SELECT_BUILDING.insertAdjacentHTML("afterbegin", html)
+        CONSTANTS.SELECT_BUILDING.insertAdjacentHTML("afterbegin", html);
     }
+    let index = 0;
     for (const day of AVAILABLE_DAYS) {
-        const html = `<option value="${day}">${day}</option>`;
-        CONSTANTS.SELECT_WEEKDAY.insertAdjacentHTML("afterbegin", html)
+        const selected = index === 0 ? `selected="selected"` : "";
+        const html = `<option value="${day}" ${selected}>${day}</option>`;
+        CONSTANTS.SELECT_WEEKDAY.insertAdjacentHTML("afterbegin", html);
+        index += 1;
     }
     CONSTANTS.SELECT_BUILDING.addEventListener("change", function () {
         const w = CONSTANTS.SELECT_WEEKDAY?.value;

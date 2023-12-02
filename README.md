@@ -15,3 +15,5 @@ Here is another example.
 ### Note
 Not every weekday is available. The API only provides open classrooms for the next two school days.
 
+## TODO
+Remove CORS proxy.
