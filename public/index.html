@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="main.js"></script>
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+
+        .day-container {
+            margin-top: 10px;
+            height: 800px;
+            position: relative;
+            border: 1px solid gray;
+        }
+
+        .day-time {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .time-row {
+            width: 100%;
+            display: flex;
+            flex-grow: 1;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .time-row>span {
+            margin-left: 5px;
+            margin-right: 5px;
+            width: 40px;
+            text-align: right;
+            font-size: small;
+        }
+
+        .time-row>div {
+            border-top: 1px solid rgba(0, 0, 0, 0.15);
+            flex-grow: 1;
+            margin-right: 5px;
+        }
+
+        .day-blocks {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .block-time-margin {
+            width: 50px;
+            height: 100%;
+        }
+
+        .block-container {
+            flex-grow: 1;
+            margin-left: 5px;
+            margin-right: 5px;
+            height: 100%;
+            position: relative;
+            overflow-x: scroll;
+        }
+
+        .slot-block {
+            width: 175px;
+            position: absolute;
+            display: flex;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .slot-block-inner {
+            padding: 3px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slot-block-inner>span:nth-child(1) {
+            font-weight: bold;
+        }
+
+        .slot-block-inner>span:nth-child(2) {
+            font-size: small;
+        }
+
+        .slot-block-inner>span:nth-child(3) {
+            font-size: small;
+        }
+
+        .time-pointer {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+        }
+
+        .time-pointer>span {
+            color: rgb(168, 27, 27);
+            font-size: small;
+            background-color: white;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .time-pointer>div {
+            border-top: 1px solid rgb(168, 27, 27);
+            flex-grow: 1;
+            margin-left: 2px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        Buildings:
+        <select name="buildings" id="buildings-selector"></select>
+        Weekday:
+        <select name="weekday" id="weekday-selector"></select>
+    </div>
+    <div class="day-container">
+        <div class="day-time" style="z-index: 1;">
+            <div class="time-row"><span>8 AM</span>
+                <div></div>
+            </div>
+            <div class="time-row"><span>9 AM</span>
+                <div></div>
+            </div>
+            <div class="time-row"><span>10 AM</span>
+                <div></div>
+            </div>
+            <div class="time-row"><span>11 AM</span>
+                <div></div>
+            </div>
+            <div class="time-row"><span>12 PM</span>
+                <div></div>
+            </div>
+            <div class="time-row"><span>1 PM</span>
+                <div></div>
+            </div>
+            <div class="time-row"><span>2 PM</span>
+                <div></div>
+            </div>
+            <div class="time-row"><span>3 PM</span>
+                <div></div>
+            </div>
+            <div class="time-row"><span>4 PM</span>
+                <div></div>
+            </div>
+            <div class="time-row"><span>5 PM</span>
+                <div></div>
+            </div>
+            <div class="time-row"><span>6 PM</span>
+                <div></div>
+            </div>
+            <div class="time-row"><span>7 PM</span>
+                <div></div>
+            </div>
+            <div class="time-row"><span>8 PM</span>
+                <div></div>
+            </div>
+            <div class="time-row"><span>9 PM</span>
+                <div></div>
+            </div>
+            <div class="time-row"><span>10 PM</span>
+                <div></div>
+            </div>
+        </div>
+        <div class="day-blocks" style="z-index: 2;">
+            <div class="block-time-margin"></div>
+            <div class="block-container"></div>
+        </div>
+        <div class="time-pointer" style="z-index: 3;">
+            <span>11:59am</span>
+            <div></div>
+        </div>
+    </div>
+</body>
+
+</html>
