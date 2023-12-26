@@ -127,7 +127,7 @@ const url = String.raw`https://corsproxy.io/?https://portalapi2.uwaterloo.ca/v2/
 const getResponse = async (): Promise<ApiResponse> => {
     try {
         const res = await fetch(url, {
-            method: "GET",
+            method: "GET"
         });
         return await res.json();
     } catch (e) {
@@ -216,7 +216,9 @@ const renderSlots = (
         } else if (a.startNumber > b.startNumber) {
             return 1;
         } else {
-            return 0;
+            const aLength = a.endNumber - a.startNumber;
+            const bLength = b.endNumber - b.startNumber;
+            return bLength - aLength;
         }
     });
 

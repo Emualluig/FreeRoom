@@ -46,4 +46,4 @@ const prodmode = {
     },
 };
 
-module.exports = devmode;
+module.exports = prodmode;
