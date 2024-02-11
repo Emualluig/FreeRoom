@@ -216,6 +216,7 @@ const renderSlots = (
         } else if (a.startNumber > b.startNumber) {
             return 1;
         } else {
+            // If equal, then by duration
             const aLength = a.endNumber - a.startNumber;
             const bLength = b.endNumber - b.startNumber;
             return bLength - aLength;
