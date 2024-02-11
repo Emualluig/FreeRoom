@@ -1,6 +1,8 @@
 # FreeRoom
 Find an open classroom in the University of Waterloo
 
+[Web page](https://emualluig.github.io/FreeRoom)
+
 # How to use
 1. Select a building and get open classroom schedule.
 2. Select the day of the week.
@@ -14,6 +16,3 @@ Here is another example.
 
 ### Note
 Not every weekday is available. The API only provides open classrooms for the next two school days.
-
-## TODO
-Remove CORS proxy.
