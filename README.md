@@ -1,7 +1,7 @@
 # FreeRoom
 Find an open classroom in the University of Waterloo
 
-[Web page](https://emualluig.github.io/FreeRoom)
+[Web page](https://emualluig.github.io/projects/FreeRoom)
 
 # How to use
 1. Select a building and get open classroom schedule.

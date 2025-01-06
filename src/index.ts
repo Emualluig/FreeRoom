@@ -123,7 +123,7 @@ const CONSTANTS: Constants = {
     SELECT_WEEKDAY: null,
 };
 
-const url = String.raw`https://corsproxy.io/?https://portalapi2.uwaterloo.ca/v2/map/OpenClassrooms`;
+const url = String.raw`https://corsproxy.io/?url=https://portalapi2.uwaterloo.ca/v2/map/OpenClassrooms`;
 const getResponse = async (): Promise<ApiResponse> => {
     try {
         const res = await fetch(url, {
@@ -210,18 +210,19 @@ const renderSlots = (
     }
 
     // Sort the intervals by increasing start time.
-    const sortedIntervals = intervals.sort((a, b) => {
-        if (a.startNumber < b.startNumber) {
-            return -1;
-        } else if (a.startNumber > b.startNumber) {
-            return 1;
-        } else {
-            // If equal, then by duration
-            const aLength = a.endNumber - a.startNumber;
-            const bLength = b.endNumber - b.startNumber;
-            return bLength - aLength;
-        }
-    });
+    const sortedIntervals = intervals
+        // Sort by duration
+        .sort((a, b) => (b.endNumber - b.startNumber) - (a.endNumber - b.startNumber))
+        // Then sort the intervals by increasing start time (required for greedy algorithm)
+        .sort((a, b) => {
+            if (a.startNumber < b.startNumber) {
+                return -1;
+            } else if (a.startNumber > b.startNumber) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
 
     // GreedyIntervalColouring algorithm from CS341. I took it this semester.
     // We use interval coloring to determine which column to place the block into.
